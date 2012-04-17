@@ -1,0 +1,12 @@
+
+<%= javascript_include_tag "highcharts" %>
+<script type="text/javascript" src="http://www.highcharts.com/highslide/highslide-full.min.js"></script>
+<script type="text/javascript" src="http://www.highcharts.com/highslide/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/highslide/highslide.css" />
+
+<h3><%= link_to ('Trailing 3 day pt-query-digest', { :action => 'three_day_pt_query' }) %> |
+<%= link_to ('Performance Status', {:action => 'performance_status'}) %></h3>
+
+<%= render :partial => 'admin/pt_query_chart', :locals => { :host => "db1"} %>
+<%= render :partial => 'admin/pt_query_chart', :locals => { :host => "db2"} %>
+<%= render :partial => 'admin/pt_query_chart', :locals => { :host => "db3"} %>

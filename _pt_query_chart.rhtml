@@ -1,0 +1,38 @@
+<div id="container_<%=host%>" style="height: 500px; width: 1000px"></div>
+
+<% period||="hours"%>
+<%= javascript_include_tag "/data_public/misc/pt_query_data_3_#{period}_#{host}"%>
+<script type="text/javascript">
+var chart_<%=host%>; // globally available
+
+jQuery(document).ready(function() {
+  chart_<%=host%> = new Highcharts.Chart({
+    chart: {
+      renderTo: 'container_<%=host%>',
+      zoomType: 'xy',
+      type: 'spline'
+    },
+    title: {
+      text: 'pt-query-digest (<%=host%>)',
+    },
+    subtitle: {
+      text: subtitle_text_<%=host%>
+    },
+    xAxis: {
+      type: 'datetime'
+    },
+    yAxis:{
+		  title: {
+			  text: 'Total Response Time'
+      },
+      min: 0
+		},
+	  // tooltip: {
+		//   shared: true,
+		//   crosshairs: true
+		// },
+    plotOptions: plot_options_<%=host%>,
+    series: series_data_<%=host%>
+  });
+});
+</script>
