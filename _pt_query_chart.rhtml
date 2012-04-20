@@ -22,15 +22,15 @@ jQuery(document).ready(function() {
       type: 'datetime'
     },
     yAxis:{
-		  title: {
-			  text: 'Total Response Time'
+      title: {
+        text: 'Total Response Time'
       },
       min: 0
-		},
-	  // tooltip: {
-		//   shared: true,
-		//   crosshairs: true
-		// },
+    },
+    // tooltip: {
+    //   shared: true,
+    //   crosshairs: true
+    // },
     plotOptions: plot_options_<%=host%>,
     series: series_data_<%=host%>
   });

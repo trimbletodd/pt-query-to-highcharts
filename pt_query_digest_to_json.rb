@@ -155,32 +155,32 @@ def get_plot_options(args)
   raise Exception.new("Poorly defined args.") if args[:since].nil? || args[:until].nil? || args[:interval].nil? || args[:host].nil?
 str = <<NACHOS
 var plot_options_#{args[:host]} = { 
-			    series: {
-				    cursor: 'pointer',
+          series: {
+            cursor: 'pointer',
             pointStart:  Date.UTC(#{js_time(args[:since] + (args[:interval]/2))}),
             pointInterval: #{args[:interval]*1000},
-				    point: {
-					    events: {
-						    click: function() {
-							    hs.htmlExpand(null, {
-								    pageOrigin: {
-									    x: this.pageX,
-									    y: this.pageY
-								    },
-								    headingText: this.series.name.slice(0,19),
-								    maincontentText: 
+            point: {
+              events: {
+                click: function() {
+                  hs.htmlExpand(null, {
+                    pageOrigin: {
+                      x: this.pageX,
+                      y: this.pageY
+                    },
+                    headingText: this.series.name.slice(0,19),
+                    maincontentText: 
                       Highcharts.dateFormat('%Y-%m-%d %H:%M:%S (%a)', this.x) +':<br/> ' +
-									    'Response time: ' + this.y +'<BR>'+
+                      'Response time: ' + this.y +'<BR>'+
                       this.series.name,
-								    width: 200
-							    });
-						    }
-					    }
-				    },
-				    marker: {
-					    lineWidth: 1
-				    }
-			    }
+                    width: 200
+                  });
+                }
+              }
+            },
+            marker: {
+              lineWidth: 1
+            }
+          }
 
  };
 var subtitle_text_#{args[:host]} = "From #{args[:since]} to #{args[:until]} in intervals of #{args[:interval]}";
